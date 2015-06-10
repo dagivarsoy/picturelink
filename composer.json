@@ -1,0 +1,41 @@
+{
+    "name": "divarsoy/picturelink",
+    "description": "Picturelink makes it easier to link multiple images to a picture block for responsive images",
+    "keywords": [
+        "divarsoy",
+        "picturelink",
+        "Responsive",
+        "images"
+    ],
+    "homepage": "https://github.com/divarsoy/picturelink",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dag A. Ivarsøy",
+            "email": "dagivarsoy@gmail.com",
+            "homepage": "https://ivarsoysolutions.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Divarsoy\\Picturelink\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Divarsoy\\Picturelink\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
