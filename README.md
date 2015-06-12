@@ -9,8 +9,28 @@
 
 
 This package aims to simplify the process of making responsive images.
+## Prerequisites
 
-## Install
+Node.js v0.10+ or io.js
+libvips v7.40.0+ (7.42.0+ recommended)
+C++11 compatible compiler such as gcc 4.6+, clang 3.0+ or MSVC 2013
+
+## Install libvips
+
+run the following as a user with sudo access:
+
+
+``` bash
+$ curl -s https://raw.githubusercontent.com/lovell/sharp/master/preinstall.sh | sudo bash -
+```
+or check out intall instructions at https://www.npmjs.com/package/sharp
+
+## Install NPM packages
+
+``` bash
+$ npm install
+```
+## Install Picturelink
 
 Via Composer
 
@@ -19,11 +39,24 @@ $ composer require divarsoy/picturelink
 ```
 
 ## Usage
+Setup source and destination folder in gulpfile.js
+Then run
 
+``` bash
+$ gulp img
+```
+to resize all images in the source folder and output them to the destination folder. You can also setup a watcher with
+
+``` bash
+$ gulp watch[img]
+```
+
+You can now use picturelink in your php scripts with
 ``` php
 $picturelink = new Divarsoy\Picturelink();
 echo $picturelink->link( '/img/test.jpg', array(320,480,768,1024));
 ```
+It will automatically download the lowest resolution image for the browser size.
 
 ## Testing
 

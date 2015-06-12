@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "gulp":"^3.8.8",
+    "sharp":"^0.10.1",
     "gulp-responsive":"^1.1.1"
   }
 }
