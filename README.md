@@ -11,9 +11,9 @@
 This package aims to simplify the process of making responsive images.
 ## Prerequisites
 
-Node.js v0.10+ or io.js
-libvips v7.40.0+ (7.42.0+ recommended)
-C++11 compatible compiler such as gcc 4.6+, clang 3.0+ or MSVC 2013
+* Node.js v0.10+ or io.js
+* libvips v7.40.0+ (7.42.0+ recommended)
+* C++11 compatible compiler such as gcc 4.6+, clang 3.0+ or MSVC 2013
 
 ## Install libvips
 
