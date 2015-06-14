@@ -123,33 +123,53 @@ class Picturelink {
         sort($sizes, SORT_NUMERIC);
 
         if (count($sizes) == 1){
-            $this->checkIfNumber($sizes[0]);
-            $returnString .= '<source media="(max-width: ' . $sizes[0] . 'px)" ';
-            $returnString .= 'srcset="' . $this->removeExtension($url) . $sizes[0] . '.' . $this->getExtension($url);
-            $returnString .= $this->makeHighResolutionLinks($url, $sizes[0], $option);
-            $returnString .= '" />';
-            return $returnString.PHP_EOL;
+            return $this->makeMaxWidthSource($url, $sizes[0], $option);
         }
-
         for($i=0; $i < count($sizes) - 1; $i++ ) {
-            $this->checkIfNumber($sizes[$i]);
-            $returnString .= '<source media="(max-width: ' . $sizes[$i] . 'px)" ';
-            $returnString .= 'srcset="' . $this->removeExtension($url) . $sizes[$i] . '.' . $this->getExtension($url);
-            $returnString .= $this->makeHighResolutionLinks($url, $sizes[$i], $option);
-            $returnString .= '" />'.PHP_EOL;
+            $returnString .= $this->makeMaxWidthSource($url, $sizes[$i], $option);
         }
         if (count($sizes) > 2) {
             $lastSize = $sizes[count($sizes) - 1];
             $nextToLastSize = $sizes[count($sizes) - 2];
-            $this->checkIfNumber($lastSize);
 
-            $returnString .= '<source media="(min-width: ' . $nextToLastSize . 'px)" ';
-            $returnString .= 'srcset="' . $this->removeExtension($url) . $lastSize . '.' . $this->getExtension($url);
-            $returnString .= $this->makeHighResolutionLinks($url, $lastSize, $option);
-            $returnString .= '" />';
-            return $returnString.PHP_EOL;
+            $returnString .= $this->makeMinWidthSource($url, $option, $lastSize, $nextToLastSize);
         }
-        return $returnString.PHP_EOL;
+        return $returnString;
+    }
+
+    /**
+     * @param $url
+     * @param int $size
+     * @param array $option
+     * @return string
+     */
+    protected function makeMaxWidthSource($url, $size, array $option)
+    {
+        $this->checkIfNumber($size);
+        $returnString = '';
+        $returnString .= '<source media="(max-width: ' . $size . 'px)" ';
+        $returnString .= 'srcset="' . $this->removeExtension($url) . $size . '.' . $this->getExtension($url);
+        $returnString .= $this->makeHighResolutionLinks($url, $size, $option);
+        $returnString .= '" />' . PHP_EOL;
+        return $returnString;
+    }
+    /**
+     * @param $url
+     * @param array $option
+     * @param int $size
+     * @param int $minSize
+     * @return string
+     */
+    protected function makeMinWidthSource($url, array $option, $size, $minSize)
+    {
+        $returnString = '';
+        $this->checkIfNumber($size);
+        $returnString .= '<source media="(min-width: ' . $minSize . 'px)" ';
+        $returnString .= 'srcset="' . $this->removeExtension($url) . $size . '.' . $this->getExtension($url);
+        $returnString .= $this->makeHighResolutionLinks($url, $size, $option);
+        $returnString .= '" />';
+
+        return $returnString . PHP_EOL;
     }
 
     /**
