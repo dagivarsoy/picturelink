@@ -1,5 +1,5 @@
 #Changelog
-All Notable changes to `Picturelink` will be documented in this file
+All Notable changes to `Picturelink` will be documented in this file.
 
 ## NEXT - YYYY-MM-DD
 
